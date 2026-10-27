@@ -3,13 +3,1188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Smooth Scroll Animation</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Sowndharya Palanisamy — Performance & Growth Marketing Specialist. Meta Ads, Google Ads, conversion tracking, B2B SaaS growth, and e-commerce acquisition.">
+  <title>Sowndharya Palanisamy | Performance &amp; Growth Marketing</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="animation-canvas"></canvas>
-  <div class="scroll-container"></div>
 
-  <script src="script.js"></script>
+  <!-- Custom Cursor Elements (Desktop only) -->
+  <div class="custom-cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Cinematic Ambient Horizontal Light Beam -->
+  <div class="cinematic-beam-line" style="top: 110px;" aria-hidden="true"></div>
+
+  <!-- Site Header & Editorial Masthead -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <div class="nav-brand-wrap">
+        <a href="#hero" class="nav-brand" aria-label="Sowndharya Palanisamy Home">
+          <span class="sparkle-icon">&#10022;</span>
+          <span>Sowndharya Palanisamy</span>
+        </a>
+        <span class="nav-concept-tag">[GROWTH IN MOTION // 2026]</span>
+      </div>
+
+      <!-- Accessible Hamburger Toggle Button (Mobile) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#hero" class="nav-link active">About</a></li>
+        <li><a href="#chronology" class="nav-link">Chronology</a></li>
+        <li><a href="#work" class="nav-link">Case Studies</a></li>
+        <li><a href="#protocol" class="nav-link">Protocol</a></li>
+        <li><a href="#arsenal" class="nav-link">Arsenal</a></li>
+        <li><a href="#credentials" class="nav-link">Credentials</a></li>
+        <li class="mobile-only-item" style="display: none; margin-top: 1rem;">
+          <a href="mailto:sowndharya982@gmail.com" class="btn-cta">
+            <span>Get in touch!</span>
+            <span class="cta-arrow">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Desktop Call to Action Button -->
+      <a href="mailto:sowndharya982@gmail.com" class="btn-cta desktop-cta">
+        <span>Get in touch!</span>
+        <span class="cta-arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Backdrop Overlay for Mobile Drawer -->
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION: SIGNATURE OPENING EXPERIENCE
+         ====================================================================== -->
+    <section class="hero-editorial-section" id="hero">
+      <div class="container">
+        <div class="hero-editorial-grid">
+
+          <!-- Left Column: Oversized Editorial Typography & Architecture -->
+          <div class="hero-content-col">
+            <div class="hero-metadata-tag">
+              <span class="pulse-dot"></span>
+              <span>Archive // Vol. 01 &bull; Performance &amp; GTM</span>
+            </div>
+
+            <h1 class="hero-editorial-title">
+              <span class="title-reveal-line"><span class="title-inner">Growth</span></span>
+              <span class="title-reveal-line"><span class="title-inner">In <em class="serif-italic-coral">Motion.</em></span></span>
+            </h1>
+
+            <!-- Prominent Name Treatment -->
+            <div class="hero-name-block">
+              <div class="hero-name-reveal">
+                <h2 class="hero-prominent-name">
+                  <span class="name-first">SOWNDHARYA</span>
+                  <span class="name-last">PALANISAMY</span>
+                </h2>
+              </div>
+            </div>
+
+            <p class="hero-standfirst">
+              Growth and performance marketing specialist navigating Meta Ads, Google Ads funnels, precision tracking architectures, and data-driven customer acquisition.
+            </p>
+
+            <!-- Architectural Spec Grid -->
+            <div class="hero-spec-grid">
+              <div class="spec-item">
+                <span class="spec-label">[ 01 // BASE ]</span>
+                <span class="spec-value">Chennai, India</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">[ 02 // DISCIPLINE ]</span>
+                <span class="spec-value">Paid Media &amp; GTM</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">[ 03 // STATUS ]</span>
+                <span class="spec-value" style="color: var(--accent-coral);">Active &bull; Open</span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="hero-actions">
+              <a href="#chronology" class="btn-editorial-primary">
+                <span>Explore Trajectory</span>
+                <span>&darr;</span>
+              </a>
+              <a href="https://linkedin.com/in/sowndharya-palanisamy92" target="_blank" rel="noopener noreferrer" class="btn-editorial-link">
+                <span>linkedin.com/in/sowndharya-palanisamy92</span>
+                <span>&nearr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Masked Monolith & Interactive 300-Frame Canvas -->
+          <div class="hero-portrait-col">
+            <div class="portrait-monolith">
+              <span class="corner-crosshair crosshair-tl">+</span>
+              <span class="corner-crosshair crosshair-tr">+</span>
+              <span class="corner-crosshair crosshair-bl">+</span>
+
+              <canvas id="canvas" class="portrait-canvas"></canvas>
+            </div>
+
+            <!-- Floating Contact Card -->
+            <div class="hero-floating-contact">
+              <div class="contact-tag-header">Direct Contact</div>
+              <div class="contact-row">
+                <span>&#9678;</span>
+                <span>Chennai, India</span>
+              </div>
+              <div class="contact-row">
+                <span>&#9993;</span>
+                <a href="mailto:sowndharya982@gmail.com">sowndharya982@gmail.com</a>
+              </div>
+              <div class="contact-row">
+                <span>&#9742;</span>
+                <a href="tel:+919345666196">+91 9345666196</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Subtle Animated Scroll Cue Below Hero -->
+        <div class="hero-scroll-cue-wrap">
+          <a href="#chronology" class="hero-scroll-cue" aria-label="Scroll to explore Chronology and Work">
+            <span class="scroll-cue-text">Scroll to Explore</span>
+            <span class="scroll-cue-arrow" aria-hidden="true">&darr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 01: CHRONOLOGY & TRAJECTORY (RESUME & TIMELINE)
+         Distinct typography-led timeline; content sits directly on background
+         ====================================================================== -->
+    <section class="section-editorial-wrap" id="chronology">
+      <div class="container">
+        
+        <!-- Editorial Section Header -->
+        <div class="editorial-section-header reveal-on-scroll">
+          <div class="header-left">
+            <span class="editorial-section-index">01 // Chronology &amp; Trajectory</span>
+            <h2 class="editorial-section-title">Professional Experience</h2>
+            <p class="editorial-section-standfirst">
+              A deliberate track record of customer acquisition, paid media operations, conversion tracking, and pipeline generation across B2B SaaS and direct-to-consumer commerce.
+            </p>
+          </div>
+          <div class="header-watermark" aria-hidden="true">CHRONO</div>
+        </div>
+
+        <div class="timeline-editorial-grid">
+          
+          <!-- Left Track: Professional Experience with Glowing Active Stars -->
+          <div class="timeline-track-col reveal-on-scroll stagger-1">
+            <div class="timeline-active-highlight" aria-hidden="true"></div>
+
+            <!-- Milestone 01: CRUD Review -->
+            <div class="timeline-entry is-active">
+              <span class="entry-star">&#10022;</span>
+              <div class="entry-meta-row">
+                <span class="entry-date">2024 &ndash; Present</span>
+                <span class="entry-company-tag">B2B SaaS Product</span>
+              </div>
+              <h3 class="entry-role">Growth Marketing &amp; Business Development</h3>
+              <div class="entry-company">CRUD Review (DataDrone)</div>
+              <p class="entry-desc">
+                Spearheaded paid social acquisition funnels on Meta Ads utilizing precision demographic and lookalike audience segmentation. Designed and deployed Meta Pixel conversion tracking with standardized UTM parameter taxonomy for end-to-end multi-touch attribution. Executed high-volume cold outreach cadences to franchise owners and enterprise accounts, managed lead stages in Zoho CRM, scheduled product demonstrations, and onboarded incoming clients.
+              </p>
+              <div class="entry-pill-wrap">
+                <span class="entry-pill">Meta Ads</span>
+                <span class="entry-pill">Meta Pixel Tracking</span>
+                <span class="entry-pill">UTM Taxonomy</span>
+                <span class="entry-pill">Franchise Cold Outreach</span>
+                <span class="entry-pill">Zoho CRM Hygiene</span>
+                <span class="entry-pill">Demo Support</span>
+              </div>
+            </div>
+
+            <!-- Milestone 02: Sareeflix -->
+            <div class="timeline-entry">
+              <span class="entry-star">&#10022;</span>
+              <div class="entry-meta-row">
+                <span class="entry-date">2023 &ndash; 2024</span>
+                <span class="entry-company-tag">DTC E-Commerce</span>
+              </div>
+              <h3 class="entry-role">Freelance Performance Marketer</h3>
+              <div class="entry-company">Sareeflix &bull; Handcrafted Ethnic Wear</div>
+              <p class="entry-desc">
+                Managed full-funnel Google Ads and Meta Ads campaigns focused on customer acquisition and direct e-commerce sales. Built systematic creative A/B testing protocols pairing short-form video reels (produced in Canva and CapCut) against static fabric drapes. Continuously monitored and optimized CTR, CPC, and blended ROAS, while managing customer direct message inquiries and order conversions.
+              </p>
+              <div class="entry-pill-wrap">
+                <span class="entry-pill">Google Ads</span>
+                <span class="entry-pill">Meta Ads</span>
+                <span class="entry-pill">Creative A/B Testing</span>
+                <span class="entry-pill">CTR &amp; ROAS Optimization</span>
+                <span class="entry-pill">Ad Copywriting</span>
+                <span class="entry-pill">Customer Conversion</span>
+              </div>
+            </div>
+
+            <!-- Milestone 03: Freelance Digital & Growth -->
+            <div class="timeline-entry">
+              <span class="entry-star">&#10022;</span>
+              <div class="entry-meta-row">
+                <span class="entry-date">2023 &ndash; Present</span>
+                <span class="entry-company-tag">Startups &amp; SMBs</span>
+              </div>
+              <h3 class="entry-role">Freelance Digital &amp; Performance Marketing</h3>
+              <div class="entry-company">Multi-Industry Commercial Growth Advisory</div>
+              <p class="entry-desc">
+                Planned and executed paid advertising campaigns across Google and Meta platforms for early-stage commercial ventures. Conducted preliminary market and audience research, structured campaign ad groups, allocated monthly budgets systematically, and performed Google Analytics dashboard audits with actionable conversion recommendations.
+              </p>
+              <div class="entry-pill-wrap">
+                <span class="entry-pill">Cross-Platform Ads</span>
+                <span class="entry-pill">Budget Pacing</span>
+                <span class="entry-pill">Visual Ad Design</span>
+                <span class="entry-pill">Google Analytics</span>
+                <span class="entry-pill">Growth Consulting</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar: Education & Core Toolkit -->
+          <div class="timeline-sidebar-col reveal-on-scroll stagger-2">
+            
+            <!-- Education Block -->
+            <div class="sidebar-sub-block">
+              <div class="sidebar-block-title">
+                <span>&#127891;</span>
+                <span>Academic &amp; Certification</span>
+              </div>
+
+              <!-- Degree -->
+              <div class="editorial-edu-entry">
+                <div class="edu-year">2023 &ndash; 2026 &bull; Undergraduate Degree</div>
+                <h4 class="edu-degree">B.Com in Bank Management</h4>
+                <div class="edu-school">Ethiraj College for Women, Chennai</div>
+                <p class="edu-notes">
+                  Comprehensive academic foundation in commercial finance, business economics, financial management, corporate accounting, and quantitative analysis.
+                </p>
+              </div>
+
+              <!-- Certification -->
+              <div class="editorial-edu-entry">
+                <div class="edu-year">Professional Certification</div>
+                <h4 class="edu-degree">Digital Marketing Certification</h4>
+                <div class="edu-school">WEB WISEZ</div>
+                <p class="edu-notes">
+                  Hands-on practical training covering paid search (Google Ads), social advertising (Meta Ads), SEO keyword strategies, campaign analytics, and conversion optimization.
+                </p>
+              </div>
+            </div>
+
+            <!-- Core Arsenal Quick Flow -->
+            <div class="sidebar-sub-block">
+              <div class="sidebar-block-title">
+                <span>&#10022;</span>
+                <span>Verified Tool Stack</span>
+              </div>
+              <div class="quick-toolkit-list">
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Meta Ads</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Google Ads</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Meta Pixel</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>UTM Taxonomy</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>ROAS Tracking</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Zoho CRM</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Google Analytics</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Canva Suite</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>CapCut Video</span>
+                <span class="quick-toolkit-pill"><span class="pill-dot"></span>Cold Calling</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 02: IMMERSIVE CASE STUDIES (FEATURED WORK)
+         Bespoke asymmetric compositions with CSS-crafted technical visualizers
+         ====================================================================== -->
+    <section class="section-editorial-wrap" id="work">
+      <div class="container">
+
+        <!-- Editorial Section Header -->
+        <div class="editorial-section-header reveal-on-scroll">
+          <div class="header-left">
+            <span class="editorial-section-index">02 // Selected Case Studies</span>
+            <h2 class="editorial-section-title">Performance In Practice</h2>
+            <p class="editorial-section-standfirst">
+              In-depth strategic examinations of customer acquisition funnels, creative testing systems, and multi-channel attribution across B2B SaaS and direct-to-consumer brands.
+            </p>
+          </div>
+          <div class="header-watermark" aria-hidden="true">STUDIES</div>
+        </div>
+
+        <div class="case-study-list">
+
+          <!-- Case Study 01: CRUD Review -->
+          <article class="case-study-feature reveal-on-scroll stagger-1">
+            <div class="case-study-info">
+              <div class="case-study-topline">
+                <span class="case-study-big-num">01</span>
+                <span class="case-study-category">B2B SaaS Growth &bull; Go-to-Market Engine</span>
+              </div>
+              <h3 class="case-study-title">CRUD Review Go-to-Market &amp; Acquisition</h3>
+              <p class="case-study-narrative">
+                CRUD Review (DataDrone) is a software platform supporting commercial businesses in collecting customer feedback and generating authentic review text. To establish reliable inbound interest, I architected a multi-stage acquisition funnel combining paid social precision targeting with outbound enterprise and franchise cadences.
+              </p>
+
+              <div class="case-study-specs">
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Target Channels</span>
+                  <span class="spec-entry-body">Meta Ads, Franchise Outreach</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Tracking Architecture</span>
+                  <span class="spec-entry-body">Meta Pixel, UTM Taxonomy</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">CRM &amp; Pipeline</span>
+                  <span class="spec-entry-body">Zoho CRM, Demo Coordination</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Role &amp; Focus</span>
+                  <span class="spec-entry-body">Growth Marketing &amp; BizDev</span>
+                </div>
+              </div>
+
+              <a href="https://linkedin.com/in/sowndharya-palanisamy92" target="_blank" rel="noopener noreferrer" class="case-study-link-wrap">
+                <span>Explore Professional Trajectory</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- Right Visual: CSS-Crafted Acquisition Funnel Architecture Diagram -->
+            <div class="case-study-visual">
+              <div class="visual-topbar">
+                <span class="visual-title-tag">GTM Acquisition Architecture</span>
+                <span class="visual-status-pill"><span class="pulse-dot"></span> Live Schema</span>
+              </div>
+
+              <div class="funnel-architecture-diagram">
+                <!-- Stage 1 -->
+                <div class="funnel-stage-row">
+                  <span class="funnel-stage-tag">[ STAGE 01 ]</span>
+                  <span class="funnel-stage-name">Audience Segmentation &amp; ICP Targeting</span>
+                  <span class="funnel-stage-spec">Franchises &bull; B2B</span>
+                </div>
+
+                <div class="funnel-connector-pulse">
+                  <div class="connector-line"></div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="funnel-stage-row">
+                  <span class="funnel-stage-tag">[ STAGE 02 ]</span>
+                  <span class="funnel-stage-name">Meta Ads Creative &amp; Value Proposition</span>
+                  <span class="funnel-stage-spec">Lead Magnet &bull; Feed</span>
+                </div>
+
+                <div class="funnel-connector-pulse">
+                  <div class="connector-line"></div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="funnel-stage-row">
+                  <span class="funnel-stage-tag">[ STAGE 03 ]</span>
+                  <span class="funnel-stage-name">Meta Pixel Standard Events &amp; UTM Tracking</span>
+                  <span class="funnel-stage-spec">Zero Attribution Loss</span>
+                </div>
+
+                <div class="funnel-connector-pulse">
+                  <div class="connector-line"></div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="funnel-stage-row" style="border-color: rgba(240, 82, 69, 0.45); background: rgba(240, 82, 69, 0.08);">
+                  <span class="funnel-stage-tag" style="color: var(--accent-glow);">[ STAGE 04 ]</span>
+                  <span class="funnel-stage-name">Zoho CRM Pipeline &bull; Product Demo Call</span>
+                  <span class="funnel-stage-spec" style="color: var(--accent-glow);">Onboarding</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 02: Sareeflix (Inverted Asymmetric Layout) -->
+          <article class="case-study-feature invert-layout reveal-on-scroll stagger-2">
+            <div class="case-study-info">
+              <div class="case-study-topline">
+                <span class="case-study-big-num">02</span>
+                <span class="case-study-category">DTC E-Commerce &bull; Performance Scaling</span>
+              </div>
+              <h3 class="case-study-title">Sareeflix DTC Growth &amp; Paid Acquisition</h3>
+              <p class="case-study-narrative">
+                Sareeflix is a specialized direct-to-consumer ethnic wear brand catering to high-intent festive and wedding shoppers. To scale orders profitably, I managed Google Ads and Meta Ads with an aggressive creative testing matrix, pairing dynamic short-form video reels against high-resolution fabric draping photography.
+              </p>
+
+              <div class="case-study-specs">
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Primary Channels</span>
+                  <span class="spec-entry-body">Meta Ads, Google Search</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Creative Framework</span>
+                  <span class="spec-entry-body">Short-form Reels vs Statics</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Optimization Metrics</span>
+                  <span class="spec-entry-body">CTR, CPC, Blended ROAS</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Customer Flow</span>
+                  <span class="spec-entry-body">Direct Queries &amp; Cart Checkouts</span>
+                </div>
+              </div>
+
+              <a href="https://linkedin.com/in/sowndharya-palanisamy92" target="_blank" rel="noopener noreferrer" class="case-study-link-wrap">
+                <span>Explore Professional Trajectory</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- Left Visual: CSS-Crafted Creative A/B Performance Testing Matrix -->
+            <div class="case-study-visual">
+              <div class="visual-topbar">
+                <span class="visual-title-tag">Creative A/B Performance Matrix</span>
+                <span class="visual-status-pill"><span class="pulse-dot"></span> Active Protocol</span>
+              </div>
+
+              <div class="ab-testing-visualizer">
+                <!-- Variant A -->
+                <div class="ab-test-card active-winner">
+                  <div class="ab-test-variant">Variant A &bull; Dynamic Motion</div>
+                  <h4 class="ab-test-heading">Short-Form Video Reels</h4>
+                  <div class="ab-test-tags">
+                    <span class="ab-tag-item">&bull; Editing: CapCut &amp; Canva</span>
+                    <span class="ab-tag-item">&bull; Format: 9:16 Vertical Story</span>
+                    <span class="ab-tag-item">&bull; Hook: Fabric drape in motion</span>
+                  </div>
+                  <span class="ab-test-metric-badge">&#10003; Higher CTR &bull; Lower CPC</span>
+                </div>
+
+                <!-- Variant B -->
+                <div class="ab-test-card">
+                  <div class="ab-test-variant">Variant B &bull; High-Res Static</div>
+                  <h4 class="ab-test-heading">Product &amp; Texture Drapes</h4>
+                  <div class="ab-test-tags">
+                    <span class="ab-tag-item">&bull; Design: Canva Static Banner</span>
+                    <span class="ab-tag-item">&bull; Format: 1:1 Feed Carousel</span>
+                    <span class="ab-tag-item">&bull; Hook: Detail &amp; Colorway focus</span>
+                  </div>
+                  <span class="ab-test-metric-badge" style="color: var(--text-muted); border-color: var(--border-subtle); background: transparent;">Baseline Retention</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 03: Freelance Digital & Performance Marketing -->
+          <article class="case-study-feature reveal-on-scroll stagger-3">
+            <div class="case-study-info">
+              <div class="case-study-topline">
+                <span class="case-study-big-num">03</span>
+                <span class="case-study-category">Multi-Industry &bull; Commercial Advisory</span>
+              </div>
+              <h3 class="case-study-title">Freelance Digital &amp; Growth Advisory</h3>
+              <p class="case-study-narrative">
+                End-to-end paid advertising management and growth operations for early-stage commercial enterprises. Across varied market conditions, I structure disciplined campaign hierarchies, allocate monthly budget pacing, and provide rigorous Google Analytics dashboard audits with transparent attribution findings.
+              </p>
+
+              <div class="case-study-specs">
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Scope of Work</span>
+                  <span class="spec-entry-body">PPC Advertising &amp; Social Ads</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Budget Strategy</span>
+                  <span class="spec-entry-body">Paced spend against CAC targets</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Analytics Audits</span>
+                  <span class="spec-entry-body">Google Analytics &amp; Conversion Tags</span>
+                </div>
+                <div class="spec-entry">
+                  <span class="spec-entry-title">Creative Suite</span>
+                  <span class="spec-entry-body">Canva &amp; Basic Photoshop</span>
+                </div>
+              </div>
+
+              <a href="https://linkedin.com/in/sowndharya-palanisamy92" target="_blank" rel="noopener noreferrer" class="case-study-link-wrap">
+                <span>Explore Professional Trajectory</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- Right Visual: Strategic Multi-Industry Grid -->
+            <div class="case-study-visual">
+              <div class="visual-topbar">
+                <span class="visual-title-tag">Growth Advisory Pillars</span>
+                <span class="visual-status-pill">&#10022; Framework</span>
+              </div>
+
+              <div class="strategic-audit-grid">
+                <div class="audit-tile">
+                  <div class="audit-tile-num">[ 01 ]</div>
+                  <h4 class="audit-tile-title">High-Intent Paid Search</h4>
+                  <p class="audit-tile-text">Google Ads keyword group structuring, negative keyword filtering, and search query match-type optimization.</p>
+                </div>
+                <div class="audit-tile">
+                  <div class="audit-tile-num">[ 02 ]</div>
+                  <h4 class="audit-tile-title">Budget Pacing</h4>
+                  <p class="audit-tile-text">Systematic monthly spend allocation preventing early budget exhaustion and maximizing high-converting days.</p>
+                </div>
+                <div class="audit-tile">
+                  <div class="audit-tile-num">[ 03 ]</div>
+                  <h4 class="audit-tile-title">Attribution Audits</h4>
+                  <p class="audit-tile-text">Google Analytics audits tracking bounce rate, session duration, landing page drop-offs, and conversion goals.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 03: PERFORMANCE PROTOCOL & METHODOLOGY
+         Numbered architectural process grid with draw-in line triggers
+         ====================================================================== -->
+    <section class="section-editorial-wrap" id="protocol">
+      <div class="container">
+
+        <!-- Editorial Section Header -->
+        <div class="editorial-section-header reveal-on-scroll">
+          <div class="header-left">
+            <span class="editorial-section-index">03 // Growth Protocol</span>
+            <h2 class="editorial-section-title">The Performance Methodology</h2>
+            <p class="editorial-section-standfirst">
+              A structured, repeatable performance marketing workflow connecting audience research with conversion tracking and sustainable customer acquisition.
+            </p>
+          </div>
+          <div class="header-watermark" aria-hidden="true">METHOD</div>
+        </div>
+
+        <div class="protocol-architectural-grid">
+          <!-- Step 01 -->
+          <div class="protocol-step reveal-on-scroll stagger-1">
+            <span class="protocol-step-num">[ PHASE 01 ]</span>
+            <h3 class="protocol-step-title">Research &amp; Audience Understanding</h3>
+            <p class="protocol-step-desc">
+              Analyzing ideal customer profiles (ICPs), competitor advertising angles, search intent keywords, and demographic behaviors to pinpoint high-potential target segments.
+            </p>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="protocol-step reveal-on-scroll stagger-2">
+            <span class="protocol-step-num">[ PHASE 02 ]</span>
+            <h3 class="protocol-step-title">Campaign Strategy &amp; Budget Planning</h3>
+            <p class="protocol-step-desc">
+              Structuring campaign hierarchies, establishing conversion KPIs, allocating budget across search and social channels, and selecting automated bidding models.
+            </p>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="protocol-step reveal-on-scroll stagger-3">
+            <span class="protocol-step-num">[ PHASE 03 ]</span>
+            <h3 class="protocol-step-title">Creative Development &amp; Ad Setup</h3>
+            <p class="protocol-step-desc">
+              Designing static banners, editing short-form video reels in Canva and CapCut, drafting benefit-driven ad copy, and executing campaign setups in Meta &amp; Google ad managers.
+            </p>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="protocol-step reveal-on-scroll stagger-1">
+            <span class="protocol-step-num">[ PHASE 04 ]</span>
+            <h3 class="protocol-step-title">Tracking &amp; Measurement</h3>
+            <p class="protocol-step-desc">
+              Implementing Meta Pixel conversion standard events, standardizing UTM parameter conventions, and verifying analytics attribution from day one.
+            </p>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="protocol-step reveal-on-scroll stagger-2">
+            <span class="protocol-step-num">[ PHASE 05 ]</span>
+            <h3 class="protocol-step-title">Optimization &amp; ROAS Scaling</h3>
+            <p class="protocol-step-desc">
+              Monitoring CTR, CPC, and ROAS on an ongoing basis, mitigating creative fatigue, reallocating spend toward top performers, and reporting transparent findings.
+            </p>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="protocol-step reveal-on-scroll stagger-3">
+            <span class="protocol-step-num">[ PHASE 06 ]</span>
+            <h3 class="protocol-step-title">Lead Pipeline &amp; Growth Iteration</h3>
+            <p class="protocol-step-desc">
+              Integrating paid campaigns with CRM pipeline stages, reviewing customer inquiry flows, and applying campaign learnings to subsequent growth sprints.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 04: CORE ARSENAL & SKILL DIRECTORY
+         Typographic index / spec sheet instead of 5 identical rounded boxes
+         ====================================================================== -->
+    <section class="section-editorial-wrap" id="arsenal">
+      <div class="container">
+
+        <!-- Editorial Section Header -->
+        <div class="editorial-section-header reveal-on-scroll">
+          <div class="header-left">
+            <span class="editorial-section-index">04 // Core Arsenal</span>
+            <h2 class="editorial-section-title">Capabilities &amp; Toolkit</h2>
+            <p class="editorial-section-standfirst">
+              A detailed directory of advertising networks, conversion frameworks, analytical toolsets, and creative software deployed across campaigns.
+            </p>
+          </div>
+          <div class="header-watermark" aria-hidden="true">ARSENAL</div>
+        </div>
+
+        <div class="arsenal-index-grid">
+
+          <!-- Category 1 -->
+          <div class="arsenal-category reveal-on-scroll stagger-1">
+            <div class="arsenal-category-title">
+              <span>&#10022;</span>
+              <span>Paid Media &amp; Advertising</span>
+            </div>
+            <ul class="arsenal-skill-items">
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Meta Ads Manager</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Google Ads (Search &amp; Shopping)</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>PPC Campaign Optimization</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Audience Demographic Targeting</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Bid Management &amp; Pacing</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Lookalike &amp; Custom Audiences</li>
+            </ul>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="arsenal-category reveal-on-scroll stagger-2">
+            <div class="arsenal-category-title">
+              <span>&#10022;</span>
+              <span>Measurement &amp; Tracking</span>
+            </div>
+            <ul class="arsenal-skill-items">
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Meta Pixel Implementation</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Standardized UTM Taxonomy</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>CTR &amp; CPC Performance Analysis</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Blended ROAS Monitoring</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Google Analytics Dashboard Audits</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Multi-Touch Conversion Attribution</li>
+            </ul>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="arsenal-category reveal-on-scroll stagger-3">
+            <div class="arsenal-category-title">
+              <span>&#10022;</span>
+              <span>Operations &amp; Creative</span>
+            </div>
+            <ul class="arsenal-skill-items">
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Zoho CRM Pipeline Hygiene</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Enterprise &amp; Franchise Cold Calling</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Short-Form Video (CapCut &amp; Canva)</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Creative A/B Testing Matrix</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Ad Copywriting &amp; Value Angles</li>
+              <li class="arsenal-skill-item"><span class="skill-bullet">&#9670;</span>Demo Scheduling &amp; Onboarding</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 05: CREDENTIALS & ACADEMIC BACKGROUND
+         ====================================================================== -->
+    <section class="section-editorial-wrap" id="credentials">
+      <div class="container">
+
+        <!-- Editorial Section Header -->
+        <div class="editorial-section-header reveal-on-scroll">
+          <div class="header-left">
+            <span class="editorial-section-index">05 // Credentials &amp; Foundation</span>
+            <h2 class="editorial-section-title">Academic &amp; Professional Qualifications</h2>
+            <p class="editorial-section-standfirst">
+              Formal business economics and commercial banking education balanced with practical performance marketing certifications.
+            </p>
+          </div>
+          <div class="header-watermark" aria-hidden="true">ACAD</div>
+        </div>
+
+        <div class="credentials-editorial-layout">
+
+          <!-- Main Credentials Column -->
+          <div class="credentials-main-block reveal-on-scroll stagger-1">
+            
+            <div class="credential-item">
+              <div class="credential-type-badge">Undergraduate Degree &bull; 2023 &ndash; 2026</div>
+              <h3 class="credential-title">B.Com in Bank Management</h3>
+              <div class="credential-entity">Ethiraj College for Women &bull; Chennai, India</div>
+              <p class="credential-details">
+                Rigorous curriculum covering commercial banking frameworks, corporate financial accounting, business economics, business communications, and quantitative decision-making.
+              </p>
+            </div>
+
+            <div class="credential-item">
+              <div class="credential-type-badge">Professional Certification</div>
+              <h3 class="credential-title">Digital Marketing Certification</h3>
+              <div class="credential-entity">WEB WISEZ</div>
+              <p class="credential-details">
+                Comprehensive practical training across paid search management, social campaign execution, audience demographic targeting, SEO strategies, and analytical reporting.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Sidebar: Location & Linguistic Capabilities -->
+          <div class="credentials-sidebar-block reveal-on-scroll stagger-2">
+            <div class="credentials-sidebar-title">[ REGIONAL &amp; MULTILINGUAL SPECS ]</div>
+            
+            <div class="language-row">
+              <span class="language-name">Location Base</span>
+              <span class="language-level">Chennai, Tamil Nadu, India</span>
+            </div>
+            <div class="language-row">
+              <span class="language-name">English</span>
+              <span class="language-level">Professional Proficiency</span>
+            </div>
+            <div class="language-row">
+              <span class="language-name">Tamil</span>
+              <span class="language-level">Native Proficiency</span>
+            </div>
+            <div class="language-row">
+              <span class="language-name">Target Geographies</span>
+              <span class="language-level">Pan-India &amp; Global B2B</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 06: INITIATE COLLABORATION (CONTACT & MINIMALIST FOOTER)
+         ====================================================================== -->
+    <section class="section-closing-contact" id="contact">
+      <div class="container">
+
+        <div class="closing-contact-grid">
+          
+          <div class="closing-statement-wrap reveal-on-scroll">
+            <div class="closing-subhead">[ 06 // INITIATE COLLABORATION ]</div>
+            <h2 class="closing-title">Let's build scalable customer acquisition engines.</h2>
+            <a href="mailto:sowndharya982@gmail.com" class="closing-big-email">
+              sowndharya982@gmail.com &nearr;
+            </a>
+          </div>
+
+          <div class="closing-meta-block reveal-on-scroll stagger-1">
+            <div class="closing-meta-row">
+              <span class="closing-meta-label">Location Base</span>
+              <span class="closing-meta-value">Chennai, Tamil Nadu, India</span>
+            </div>
+            <div class="closing-meta-row">
+              <span class="closing-meta-label">Phone &bull; WhatsApp</span>
+              <span class="closing-meta-value"><a href="tel:+919345666196">+91 9345666196</a></span>
+            </div>
+            <div class="closing-meta-row">
+              <span class="closing-meta-label">Professional Network</span>
+              <span class="closing-meta-value"><a href="https://linkedin.com/in/sowndharya-palanisamy92" target="_blank" rel="noopener noreferrer">linkedin.com/in/sowndharya-palanisamy92 &nearr;</a></span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Minimalist Footer Bar -->
+        <div class="minimalist-footer-bar">
+          <div>&copy; 2026 Sowndharya Palanisamy. All rights reserved. &bull; Chennai, India</div>
+          <ul class="footer-nav-simple">
+            <li><a href="#hero">About</a></li>
+            <li><a href="#chronology">Chronology</a></li>
+            <li><a href="#work">Case Studies</a></li>
+            <li><a href="#protocol">Protocol</a></li>
+            <li><a href="#arsenal">Arsenal</a></li>
+            <li><a href="#credentials">Credentials</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       SCRIPTS: COORDINATED MOTION ENGINES & CANVAS SCRUBBING
+       ====================================================================== -->
+  <script>
+    // 1. Subtle Custom Cursor Follower (Desktop only)
+    (function initCustomCursor() {
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      if (!dot || !ring || window.matchMedia('(pointer: coarse)').matches) return;
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      }, { passive: true });
+
+      function loop() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      // Expand ring on interactive elements
+      const interactives = document.querySelectorAll('a, button, input, [role="button"]');
+      interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    })();
+
+    // 2. Accessible Mobile Navigation Controller
+    (function initMobileNav() {
+      const toggle = document.getElementById('navToggle');
+      const menu = document.getElementById('navMenu');
+      const backdrop = document.getElementById('navBackdrop');
+      if (!toggle || !menu) return;
+
+      function openMenu() {
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.classList.add('open');
+        if (backdrop) backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) closeMenu();
+        else openMenu();
+      });
+
+      if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 992 && toggle.getAttribute('aria-expanded') === 'true') {
+          closeMenu();
+        }
+      });
+    })();
+
+    // 3. Scroll-Triggered Reveal Engine via IntersectionObserver
+    (function initScrollReveals() {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (!revealElements.length || !('IntersectionObserver' in window)) {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    })();
+
+    // 4. Active Navigation Highlighting on Scroll
+    (function initNavHighlight() {
+      const sections = document.querySelectorAll('section[id], footer[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      if (!sections.length || !navLinks.length) return;
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPosition = window.scrollY + 220;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
+    })();
+
+    // 5. Signature Timeline Scroll-Motion Engine (Pulsing Stars, Traveling Line & Focused Typography)
+    (function initTimelineScrollMotion() {
+      const timelineTrack = document.querySelector('.timeline-track-col');
+      if (!timelineTrack) return;
+
+      const progressLine = timelineTrack.querySelector('.timeline-active-highlight');
+      const entries = timelineTrack.querySelectorAll('.timeline-entry');
+      if (!entries.length) return;
+
+      let ticking = false;
+
+      function updateTimelineMotion() {
+        const viewportHeight = window.innerHeight;
+        // Focus trigger line at 52% viewport height (natural reading eye level)
+        const triggerY = viewportHeight * 0.52;
+        const trackRect = timelineTrack.getBoundingClientRect();
+
+        const firstEntry = entries[0];
+        const lastEntry = entries[entries.length - 1];
+        const firstStar = firstEntry.querySelector('.entry-star');
+        const lastStar = lastEntry.querySelector('.entry-star');
+
+        let lineStart = 24;
+        let lineEnd = trackRect.height - 24;
+
+        if (firstStar && lastStar) {
+          lineStart = firstEntry.offsetTop + firstStar.offsetTop + (firstStar.offsetHeight * 0.5);
+          lineEnd = lastEntry.offsetTop + lastStar.offsetTop + (lastStar.offsetHeight * 0.5);
+        }
+
+        const currentYInTrack = triggerY - trackRect.top;
+        let progressHeight = 0;
+
+        if (currentYInTrack > lineStart) {
+          progressHeight = Math.min(lineEnd - lineStart, currentYInTrack - lineStart);
+        }
+
+        if (progressLine) {
+          progressLine.style.top = `${lineStart}px`;
+          progressLine.style.height = `${progressHeight}px`;
+          if (progressHeight > 8) {
+            progressLine.classList.add('has-progress');
+          } else {
+            progressLine.classList.remove('has-progress');
+          }
+        }
+
+        // Active entry determination: entry closest to reading trigger line
+        let activeEntry = null;
+        let minDistance = Infinity;
+
+        entries.forEach(entry => {
+          const rect = entry.getBoundingClientRect();
+          const entryMid = rect.top + rect.height * 0.5;
+          const dist = Math.abs(entryMid - triggerY);
+
+          // Focus zone
+          const inFocusZone = rect.top < (viewportHeight * 0.75) && rect.bottom > (viewportHeight * 0.25);
+          if (inFocusZone && dist < minDistance) {
+            minDistance = dist;
+            activeEntry = entry;
+          }
+        });
+
+        entries.forEach(entry => {
+          if (entry === activeEntry) {
+            entry.classList.add('is-active');
+          } else {
+            entry.classList.remove('is-active');
+          }
+        });
+
+        ticking = false;
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(updateTimelineMotion);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', requestTick, { passive: true });
+      window.addEventListener('resize', requestTick, { passive: true });
+      updateTimelineMotion();
+    })();
+
+    // 6. Interactive Canvas Image Scrubbing Engine (300 Frames Portrait Head-Turn)
+    (function initCanvasScrubbing() {
+      const canvas = document.getElementById('canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+
+      const FRAME_COUNT = 300;
+      const images = new Array(FRAME_COUNT);
+      let currentFrameIndex = 0;
+      let targetFrameIndex = 0;
+      let lastDrawnIndex = -1;
+
+      // 3-digit frame filename (e.g. 'ezgif-frame-001.jpg')
+      const getFrameSrc = (index) => `ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
+
+      // Canvas resizing synchronized to portrait monolith container with High-DPI support
+      function resizeCanvas() {
+        const container = canvas.parentElement;
+        if (!container) return;
+
+        const rect = container.getBoundingClientRect();
+        const dpr = Math.max(window.devicePixelRatio || 1, 1);
+
+        const w = Math.round(rect.width);
+        const h = Math.round(rect.height);
+
+        if (w === 0 || h === 0) return;
+
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        render(Math.round(currentFrameIndex), true);
+      }
+
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+
+      // Draw image with aspect-ratio cover centered with integer coordinates
+      function drawCover(img) {
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = img.naturalWidth || img.width;
+        const ih = img.naturalHeight || img.height;
+
+        if (!iw || !ih || !cw || !ch) return;
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        const scale = Math.max(cw / iw, ch / ih);
+        const nw = Math.round(iw * scale);
+        const nh = Math.round(ih * scale);
+        const dx = Math.round((cw - nw) * 0.5);
+        const dy = Math.round((ch - nh) * 0.5);
+
+        ctx.drawImage(img, dx, dy, nw, nh);
+      }
+
+      // Render specific frame
+      function render(frameIndex, force = false) {
+        const clamped = Math.max(0, Math.min(FRAME_COUNT - 1, frameIndex));
+
+        if (!force && clamped === lastDrawnIndex) return;
+
+        const img = images[clamped];
+        if (img && img.complete && (img.naturalWidth || img.width) > 0) {
+          drawCover(img);
+          lastDrawnIndex = clamped;
+        } else if (lastDrawnIndex >= 0 && images[lastDrawnIndex]) {
+          drawCover(images[lastDrawnIndex]);
+        }
+      }
+
+      // Preload images asynchronously with high priority for frame 1
+      function preloadImages() {
+        for (let i = 0; i < FRAME_COUNT; i++) {
+          const img = new Image();
+          if (i === 0) {
+            img.fetchPriority = 'high';
+          }
+          img.decoding = 'async';
+          img.src = getFrameSrc(i + 1);
+
+          img.onload = () => {
+            const activeFrame = Math.round(currentFrameIndex);
+            if (activeFrame === i || (i === 0 && lastDrawnIndex === -1)) {
+              render(activeFrame, true);
+            }
+          };
+
+          images[i] = img;
+        }
+      }
+
+      // Track scroll target: scrubs portrait animation as hero is viewed and scrolled
+      function onScroll() {
+        const hero = document.getElementById('hero');
+        const heroHeight = hero ? hero.offsetHeight + 200 : window.innerHeight;
+        const progress = Math.min(1, Math.max(0, window.scrollY / heroHeight));
+        targetFrameIndex = progress * (FRAME_COUNT - 1);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Smooth interpolation loop with cinematic inertia
+      function animate() {
+        const diff = targetFrameIndex - currentFrameIndex;
+
+        if (Math.abs(diff) > 0.0005) {
+          currentFrameIndex += diff * 0.09;
+          render(Math.round(currentFrameIndex));
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      // Initialize
+      window.addEventListener('load', resizeCanvas);
+      if (window.ResizeObserver && canvas.parentElement) {
+        new ResizeObserver(resizeCanvas).observe(canvas.parentElement);
+      }
+      resizeCanvas();
+      preloadImages();
+      onScroll();
+      requestAnimationFrame(animate);
+    })();
+  </script>
 </body>
 </html>
